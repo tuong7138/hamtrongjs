@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <b>met</b>
+    <input type="number"  placeholder="met sang foot" id="metfoot" onkeyup="chan()">
+    <b>foot</b>
+    <input type="number" placeholder="foot sang met" id="footmet" onkeydown="chan1()">
+    <h2 id="result"></h2>
+</body>
+</html>
+<script>
+    function footmet(foot){
+        return foot*3.279;
+    }
+    function metfoot(met){
+        return met*0.305;
+    }
+    function chan(){
+        let met=document.getElementById('metfoot').value;
+        document.getElementById('footmet').value=metfoot(met);
+    }
+    function chan1(){
+        let foot=document.getElementById('footmet').value;
+        document.getElementById('metfoot').value=footmet(foot);
+    }
+    
+   
+    
+</script>
