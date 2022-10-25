@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>bai tap 1</h2>
+    <input type="number" name="" placeholder="tham so 1" id="ts1">
+    <input type="number" name="" placeholder="tham so 2" id="ts2">
+    <input type="button" value="kiemtra" onclick="run()">
+    <h3 id="kq"></h3>
+    <br>
+    <h2>bai tap 2</h2>
+    <input type="text" name="" id="sao">
+    <input type="button" value="nhap ngoi sao" onclick="timsao()">
+    <h2 id="vitri"></h2>
+    <h2 id="vitri2"></h2>
+    <h2>bai tap 3</h2>
+    <input type="number" name="" id="somu">
+    <input type="button" value="mu 2 so" onclick="mu2so()">
+    <h2>bai tap 4</h2>
+    <input type="number" id="bankinh" placeholder="nhap ban kinh">
+    <input type="button" value="tinh dien tich plus giai thua" onclick="dientich()">
+    <input type="button" value="tinh chu vi" onclick="chuvi()">
+    <h3 id="kq4">ket qua</h3>
+    <h2 id="kq5">bai tap 5 kem phia tren bai tap 4 nha thay</h2>
+    <h2>bai tap 6</h2>
+    <input type="text" id="kytu" placeholder="nhap 1 ky tu thoi">
+    <input type="button" value="kiem tra ky tu" onclick="ktkytu()">
+    <h3 id="kq6">ket qua 6</h3>
+    <h2>bai tap 7</h2>
+    <input type="text" id="dayso" placeholder="nhap so ngan cach bang dau ,">
+    <input type="button" value="tim min" onclick="ktmin()">
+    <h3 id="kq7">ket qua 7</h3>
+    <h2>bai tap 8</h2>
+    <input type="number" id="amduong" placeholder="nhap so">
+    <input type="button" value="kiem tra am duong" onclick="ktamduong()">
+    <h3 id="kq8">ket qua 8</h3>
+    <h2>bai tap 9</h2>
+    <input type="text" id="dayso1" placeholder="nhap day so ngan cach bang dau phay">
+    <input type="button" value="dao mang" onclick="daomang()">
+    <h3 id="kq9">ket qua 9</h3>
+    <h2>bai tap 10</h2>
+    <input type="text" name="" id="mang2" placeholder="nhap mang ngan cach bang dau phay">
+    <input type="text" id="kytu2" placeholder="nhap 1 ky tu bay ky">
+    <input type="button" value="kiem tra mang co ky tu khong" onclick="ktmang()">
+    <h3 id="kq10">ket qua 10</h3>
+</body>
+</html>
+<script>
+    //baitap1
+    function check(ts1,ts2){
+      return  (ts1>ts2)?'thang so 1 lon hon tham so 2':ts1+ts2;
+    }
+    function run(){
+    let ts1=+document.getElementById('ts1').value;
+    let ts2=+document.getElementById('ts2').value;
+    document.getElementById('kq').innerHTML= check(ts1,ts2);
+    }
+    //baitap2
+    let arr='Polaris,Aldebaran,Deneb,Vega,Altair,Dubhe,Regulus'.split(',');
+    let arr2='Ursa Minor,Tarurus,Cygnus,Lyra,Aquila,Ursa Major,Leo'.split(',');
+
+    
+    function trasao(sao,arr,arr2){
+        let k='';
+        for(let i=0;i<arr.length;i++){
+        if(sao==arr[i]){
+            k=arr2[i];
+            break;
+        }
+        else{ k='khong tim thay chom sao'}
+    }
+    return k;
+    // for(let i=0;i<arr.length;i++){
+    //     return (sao==arr[i])?arr2[i]:'khong tim thay chom sao';
+    // }
+    }
+    function timsao(){
+        let sao = document.getElementById('sao').value;
+        document.getElementById('vitri').innerHTML=trasao(sao,arr,arr2);
+       document.getElementById('vitri2').innerHTML= sao;
+    }
+    
+    //baitap3
+    function muso(somu){
+        return somu*somu
+    }
+    function mu2so(){
+        let somu=+document.getElementById('somu').value;
+        
+        document.getElementById('somu').value=muso(somu);
+    }
+   //baitap4 - 5
+    function tdientich(bankinh){
+        return bankinh*bankinh*Math.PI;
+    }
+    function tchuvi(bankinh){
+        return bankinh*2*Math.PI;
+    }
+   
+    function dientich(){
+        let bankinh=+document.getElementById('bankinh').value;
+        document.getElementById('kq4').innerHTML='dien tich hinh tron: ' + tdientich(bankinh); 
+        document.getElementById('kq5').innerHTML='giaithua: ' + tgiaithua(bankinh); 
+    }
+    function chuvi(){
+        let bankinh=+document.getElementById('bankinh').value;
+        document.getElementById('kq4').innerHTML='chu vi hinh tron la: ' +tchuvi(bankinh);
+    }
+    //baitap5
+    function tgiaithua(bankinh){
+        let k=1;
+        for(let i=bankinh;i>1;i--){
+            k=k*i;
+        }
+        return k;
+    }
+    //baitap6
+    arr6='1,2,3,4,5,6,7,8,9,0'.split(',');
+    function check(kytu){
+        let k=false;
+        for(let i=0;i<arr6.length;i++){
+            if(kytu==arr6[i]){
+                k=true;
+                break;
+            }
+            return k;
+        }
+
+    }
+   function ktkytu(){
+        let kytu=document.getElementById('kytu').innerHTML;
+        document.getElementById('kq6').innerHTML='ket qua la: '+check(kytu);
+    }
+    //baitap7
+    function funcmin(dayso){
+        let a=dayso.split(',');
+        let min=a[0];
+        for(let i=0;i<a.length;i++){
+            if(min>a[i]){
+                min=a[i]
+            }
+        }
+        return min
+    }
+    function ktmin(){
+        let dayso= document.getElementById('dayso').value;
+       //document.getElementById('kq7').innerHTML=dayso;
+       document.getElementById('kq7').innerHTML=funcmin(dayso);
+       
+    }
+    //baitap 8
+    function checkamduong(amduong){
+        return(amduong>= 0)? true : false;
+    }
+    function ktamduong(){
+        let amduong=document.getElementById('amduong').value;
+        document.getElementById('kq8').innerHTML='ket qua la: '+ checkamduong(amduong);
+    }
+    //baitap9
+    function hdaomang(dayso1){
+        let arr3=dayso1.split(',');
+        let arr4=[];
+        for(let i=0;i<arr3.length;i++){
+            arr4[i]=arr3[arr3.length-1-i]
+        }
+        return arr4;
+    }
+    function daomang(){
+        let dayso1=document.getElementById('dayso1').value;
+        document.getElementById('kq9').innerHTML='day so dao la: '+hdaomang(dayso1);
+    }
+    //bai tap10
+    function hamktmang(kytu2,mang2){
+        
+        let a=mang2.split(',');
+        let k2=-1;
+
+        for(let i=0;i<a.length;i++){
+            if(kytu2==a[i]){
+                k2=a[i].length;
+                break;
+            }
+        }
+        return k2;
+    }
+    function ktmang(){
+        let kytu2=document.getElementById('kytu2').value;
+        let mang2=document.getElementById('mang2').value;
+        document.getElementById('kq10').innerHTML=hamktmang(kytu2,mang2);
+        //document.getElementById('kq10').innerHTML=mang2;
+    }
+</script>
